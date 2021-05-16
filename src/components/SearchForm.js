@@ -1,21 +1,19 @@
 import React, { useState } from 'react'
 
 const SearchForm = props => {
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState()
 
   const handleChange = e => {
-    e.persist()
     const event = e.target.value
-    console.log(`search in SearchForm handleChange: ${event}`)
-    setSearch({
-      ...search,
-      search: event
-    })
+    console.log(`event in SearchForm handleChange: ${search}`)
+    setSearch(event)
   }
 
-  const handleSubmit = e => {
-    e.stopPropagation()
-    props.setQuery(search)
+  const handleSubmit = () => {
+    const newSearch = search
+    console.log('newSearch in SearchForm component:', newSearch)
+    props.setQuery(newSearch)
+    setSearch('')
   }
 
   return (
@@ -24,9 +22,7 @@ const SearchForm = props => {
         <input
           type='text'
           placeholder='search by username'
-          onChange={e => {
-            handleChange(e)
-          }}
+          onChange={e => handleChange(e)}
         />
         <input type='submit' />
       </form>

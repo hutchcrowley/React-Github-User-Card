@@ -5,7 +5,7 @@ import SearchForm from './SearchForm'
 import Follower from './Follower'
 
 const FollowersList = props => {
-  console.log(`setQuery prop inside FollowersList: ${props.setQuery}`)
+  console.log(`setQuery prop inside FollowersList: ${toString(props.setQuery)}`)
 
   return (
     <>
@@ -16,8 +16,7 @@ const FollowersList = props => {
       </div>
       <div className='followers-list'>
         {props.followers.map(follower => (
-
-          <div id={follower.id}>
+          <div id={follower.id} key>
             <Follower
               picture={follower.avatar_url}
               handle={follower.login}

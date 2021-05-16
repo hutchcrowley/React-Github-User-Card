@@ -16,13 +16,24 @@ const App = () => {
       .then(res => {
         console.log('Result of search API call in CDU: ', res.data)
         setUser(res.data)
+        setQuery('')
       })
       .catch(err => console.log('Error: ', err))
   }, [query])
 
   useEffect(() => {
     axios
-      .get(`https://api.github.com/users/hutchcrowley/folowers`)
+      .get('https://api.github.com/users/hutchcrowley')
+      .then(res => {
+        console.log('Result of search API call in CDU: ', res.data)
+        setUser(res.data)
+      })
+      .catch(err => console.log('Error: ', err))
+  }, [])
+
+  useEffect(() => {
+    axios
+      .get('https://api.github.com/users/hutchcrowley/folowers')
       .then(res => {
         console.log(res.data)
         setFollowers(res.data)
