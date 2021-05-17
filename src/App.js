@@ -39,7 +39,7 @@ const App = () => {
         setFollowers(res.data)
       })
       .catch(err => console.log('Error: data not returned from server.', err))
-  }, [])
+  }, [user])
 
   return (
     <Container className='App'>
