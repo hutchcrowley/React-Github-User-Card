@@ -33,7 +33,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get('https://api.github.com/users/hutchcrowley/folowers')
+      .get(`https://api.github.com/users/${user}/followers`)
       .then(res => {
         console.log(res.data)
         setFollowers(res.data)
